@@ -7,16 +7,11 @@ export class AppController {
 
   @Get()
   sendMail(): any {
-    return this.appService.example();
+    return this.appService.sendPlainText();
   }
 
   @Get('template')
   sendTemplate(): any {
-    return this.appService.example2();
-  }
-
-  @Get('helloo')
-  hello() {
-    return 'hello&7';
+    return this.appService.sendHTML();
   }
 }

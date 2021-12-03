@@ -13,18 +13,18 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
       transport: {
         host: 'smtp.ethereal.email',
         port: 587,
-        secure: false, // true for 465, false for other ports
+        secure: false,
         auth: {
-          user: 'rosalia.batz11@ethereal.email', // generated ethereal user
-          pass: 'seTZwjWAY7B3SVFpMH', // generated ethereal password
+          user: 'rosalia.batz11@ethereal.email',
+          pass: 'seTZwjWAY7B3SVFpMH',
         },
       },
       defaults: {
-        from: '"Mailer Test" <rosalia.batz11@ethereal.email>', // outgoing email ID
+        from: '"Mailer Test" <rosalia.batz11@ethereal.email>',
       },
       template: {
         dir: join(__dirname, './template'),
-        adapter: new HandlebarsAdapter(), // or new PugAdapter()
+        adapter: new HandlebarsAdapter(),
         options: {
           strict: true,
         },
