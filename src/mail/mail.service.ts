@@ -8,8 +8,8 @@ export class MailService {
   public sendPlainText(): void {
     this.mailerService
       .sendMail({
-        to: 'mxgvrl@gmail.com',
-        from: 'rosalia.batz11@ethereal.email',
+        to: process.env.RECEIVER_EMAIL,
+        from: process.env.SENDER_EMAIL,
         subject: 'Testing Nest MailerModule ✔',
         text: 'welcome',
         html: '<b>welcome</b>',
@@ -25,8 +25,8 @@ export class MailService {
   public sendHTML(): void {
     this.mailerService
       .sendMail({
-        to: 'mxgvrl@gmail.com',
-        from: 'rosalia.batz11@ethereal.email',
+        to: process.env.RECEIVER_EMAIL,
+        from: process.env.SENDER_EMAIL,
         subject: 'Testing Nest Mailermodule with template ✔',
         template: __dirname + '/template/mail-body',
         context: {

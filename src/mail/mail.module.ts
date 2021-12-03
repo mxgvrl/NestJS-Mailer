@@ -1,3 +1,4 @@
+import { ConfigModule } from '@nestjs/config';
 import { Module } from '@nestjs/common';
 import { MailService } from './mail.service';
 import { MailController } from './mail.controller';
@@ -7,18 +8,21 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: '.mailer.env',
+    }),
     MailerModule.forRoot({
       transport: {
-        host: 'smtp.ethereal.email',
-        port: 587,
+        host: process.env.EMAIL_HOST,
+        port: process.env.EMAIL_PORT,
         secure: false,
         auth: {
-          user: 'rosalia.batz11@ethereal.email',
-          pass: 'seTZwjWAY7B3SVFpMH',
+          user: process.env.SENDER_EMAIL,
+          pass: process.env.SENDER_PASS,
         },
       },
       defaults: {
-        from: '"Mailer Test" <rosalia.batz11@ethereal.email>',
+        from: `"Mailer Test" <${process.env.SENDER_EMAIL}>`,
       },
       template: {
         dir: join(__dirname, './template'),
