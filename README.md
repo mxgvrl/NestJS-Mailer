@@ -22,4 +22,5 @@ localhost:3000/mail/template
 
 ```bash
 Configure your email in root .main.env file (RECEIVER_EMAIL=[your email])
+You will get email from p1708.mcb@gmail.com
 ```
