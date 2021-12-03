@@ -10,9 +10,9 @@ export class MailService {
       .sendMail({
         to: process.env.RECEIVER_EMAIL,
         from: process.env.SENDER_EMAIL,
-        subject: 'Testing Nest MailerModule ✔',
-        text: 'welcome',
-        html: '<b>welcome</b>',
+        subject: 'NestJS MailerApp',
+        text: 'That is a plain text',
+        html: '<b>That is HTML</b>',
       })
       .then((success) => {
         return console.log(success);
@@ -27,11 +27,11 @@ export class MailService {
       .sendMail({
         to: process.env.RECEIVER_EMAIL,
         from: process.env.SENDER_EMAIL,
-        subject: 'Testing Nest Mailermodule with template ✔',
+        subject: 'NestJS MailerApp (with template)',
         template: __dirname + '/template/mail-body',
         context: {
           code: 'cf1a3f828287',
-          username: 'john doe',
+          username: 'maxim gavrilovich',
         },
       })
       .then((success) => {
