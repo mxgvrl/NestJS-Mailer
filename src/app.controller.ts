@@ -6,7 +6,17 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  sendMail(): any {
+    return this.appService.example();
+  }
+
+  @Get('template')
+  sendTemplate(): any {
+    return this.appService.example2();
+  }
+
+  @Get('helloo')
+  hello() {
+    return 'hello&7';
   }
 }
