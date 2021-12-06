@@ -1,18 +1,34 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MailController } from './mail.controller';
+import { MailService } from './mail.service';
 
 describe('MailController', () => {
-  let controller: MailController;
+  let mailController: MailController;
+  let mailService: MailService;
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+  beforeAll(async () => {
+    const ApiServiceProvider = {
+      provide: MailService,
+      useFactory: () => ({
+        sendPlainText: jest.fn(() => []),
+        sendHTML: jest.fn(() => []),
+      }),
+    };
+    const app: TestingModule = await Test.createTestingModule({
       controllers: [MailController],
+      providers: [MailService, ApiServiceProvider],
     }).compile();
-
-    controller = module.get<MailController>(MailController);
+    mailController = app.get<MailController>(MailController);
+    mailService = app.get<MailService>(MailService);
   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
+  it('calling sendPlainText method', () => {
+    mailController.sendPlainText();
+    expect(mailService.sendPlainText).toHaveBeenCalled();
+  });
+
+  it('calling sendTemplate method', () => {
+    mailController.sendTemplate();
+    expect(mailService.sendHTML).toHaveBeenCalled();
   });
 });
