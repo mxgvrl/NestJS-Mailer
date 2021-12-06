@@ -35,10 +35,10 @@ export class MailService {
         },
       })
       .then((success) => {
-        console.log(success);
+        return console.log(success);
       })
       .catch((err) => {
-        console.log(err);
+        return console.log(err);
       });
   }
 }
