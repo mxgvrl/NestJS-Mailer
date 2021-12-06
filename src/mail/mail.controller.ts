@@ -6,12 +6,12 @@ export class MailController {
   constructor(private readonly mailService: MailService) {}
 
   @Get()
-  sendPlainText(): any {
+  sendPlainText() {
     return this.mailService.sendPlainText();
   }
 
   @Get('template')
-  sendTemplate(): any {
+  sendTemplate() {
     return this.mailService.sendHTML();
   }
 }
