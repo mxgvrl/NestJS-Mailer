@@ -20,13 +20,11 @@ describe('MailService', () => {
     mailerService = app.get<MailerService>(MailerService);
   });
 
-  // .then is not a function
   it('calling sendPlainText method', () => {
     mailService.sendPlainText();
     expect(mailerService.sendMail).toHaveBeenCalled();
   });
 
-  // .then is not a function
   it('calling sendHTML method', () => {
     mailService.sendHTML();
     expect(mailerService.sendMail).toHaveBeenCalled();
