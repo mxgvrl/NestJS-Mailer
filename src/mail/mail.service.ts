@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
+import { User } from '../user/user.entity';
 
 @Injectable()
 export class MailService {
@@ -15,15 +16,15 @@ export class MailService {
     });
   }
 
-  public async sendHTML() {
+  public async sendHTML(user?: User) {
     await this.mailerService.sendMail({
-      to: process.env.RECEIVER_EMAIL,
+      to: user.email,
       from: process.env.SENDER_EMAIL,
       subject: 'NestJS MailerApp (with template)',
       template: __dirname + '/template/mail-body',
       context: {
-        code: 'cf1a3f828287',
-        username: 'maxim gavrilovich',
+        code: user.accessToken.slice(0, 10),
+        username: `${user.firstName} ${user.lastName}`,
       },
     });
   }

@@ -21,9 +21,6 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
           pass: process.env.SENDER_PASS,
         },
       },
-      defaults: {
-        from: `"Mailer App" <${process.env.SENDER_EMAIL}>`,
-      },
       template: {
         dir: join(__dirname, './template'),
         adapter: new HandlebarsAdapter(),
